@@ -16,6 +16,12 @@
 \input{preamble}
 \allowdisplaybreaks
 
+% Extra packages
+\usepackage{relsize}
+
+% TIkzlibraries
+\usetikzlibrary{decorations.pathmorphing}
+
 %
 % ABOUT FONT DEFINTIONS IN THE PREAMBLE
 %
@@ -68,26 +74,9 @@
 %
 % THEOREM ENVIRONMENTS
 %
-% Theorems, propositions, etc (dark green)
-\theoremstyle{darkgreentheorem}
+\setbeamertemplate{theorems}[numbered]
 \newtheorem{thm}{Theorem}
-\newtheorem{lm}[thm]{Lemma}
-\newtheorem{prop}[thm]{Proposition}
-\newtheorem{cor}[thm]{Corollary}
-\newtheorem{conj}[thm]{Conjecture}
-% Definitions (dark blue)
-\theoremstyle{darkbluedefinition}
-\newtheorem{defn}[thm]{Definition}
-% Examples (dark red)
-\theoremstyle{darkredexample}
-\newtheorem{exa}[thm]{Example}
-% Remarks (black)
-\theoremstyle{remark}
-\newtheorem{rem}[thm]{Remark}
-\newtheorem{nota}[thm]{Notation}
-\newtheorem{fact}[thm]{Fact}
-\newtheorem{q}[thm]{Question}
-\newtheorem{pbl}[thm]{Problem}
+\newtheorem{exe}{Exercise}
 
 %
 % THEOREM CROSS-REFERENCING
@@ -121,20 +110,23 @@
 % MATH OPERATORS
 %
 \DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Aut}{Aut}
 
 %
 % OTHER COMMANDS
 %
 \newcommand{\ot}{\otimes}
 \newcommand{\op}{\oplus}
+\newcommand{\act}{\mbox{ }\rotatebox[origin=c]{-120}{$\circlearrowright$}}
 
 %
 % TITLE PAGE INFORMATION
 %
-\title[Title]{Title}
+\title[Basics of monodromy]{Basics of Monodromy}
 \author{Pedro Núñez}
-\institute{University of Freiburg}
-\date{\today}
+\institute{Basic Notions --- University of Freiburg}
+\date{14th May 2020}
  
 %
 % LINKS AND PDF OPTIONS
@@ -154,18 +146,214 @@
   citecolor=linkred,
   urlcolor=linkred}
 \makeatother
+
+% Table of contents
+\setbeamertemplate{section in toc}[sections numbered]
+
+% Add table of contents at the beginning of each section
+\AtBeginSection[]
+{
+    \begin{frame}
+	\frametitle{Table of Contents}
+	\tableofcontents[currentsection]
+    \end{frame}
+}
  
 \begin{document}
  
 \frame{\titlepage}
- 
+
+\section{Introduction}
 \begin{frame}
-\frametitle{Sample frame title}
-This is a text in the first frame. This is a text in the first frame. This is a text in the first frame.
-Here is a formula:
-\[ \chi(\F)=\sum_{i=1}^{\dim{X}}(-1)^{i}h^{i}(X,\F). \]
+    \frametitle{Motivating example --- A multi-valued function}
+    Consider $z=re^{\theta i}\mapsto z^{2}=r^{2}e^{2\theta i}$ on $\C$.
+    Local inverse on $\C^{\times}$:
+    \[ z=re^{\theta i} \mapsto \sqrt{z}=\sqrt{r}e^{\frac{\theta}{2}i}. \]
+    \pause
+
+    \textbf{Ambiguity:} the previous expression is not well defined, as
+    \[ re^{\theta i}=re^{(\theta+2\pi)i}\mapsto \sqrt{r}e^{\frac{\theta}{2}i}\neq \sqrt{r}e^{\left(\frac{\theta}{2}+\pi\right)i}. \]
+    \pause
+
+    Let $z_{0}\in \C^{\times}$ and pick one value for $\sqrt{z_{0}}$.
+    Let $\gamma\colon [0,1]\to \C^{\times}$ be a path with $\gamma(0)=z_{0}$.
+    Then the chosen $\sqrt{z_{0}}$ determines uniquely a value of $\sqrt{\gamma(t)}$ for all $t\in [0,1]$, because we want $z\mapsto \sqrt{z}$ to be continuous.
 \end{frame}
  
+\begin{frame}
+    \frametitle{The Monodromy Theorem}
+    \begin{thm}[Weierstraß]
+	Analytic continuation along a path only depends on the path up to homotopy.
+    \end{thm}
+    \pause
+    \vspace{2em}
+    In particular, if we walk around a simply connected space, then the analytic continuation is single-valued everywhere.
+    \pause
+    \vspace{2em}
+    Hence:
+    
+    \textbf{``monodromy''}, \textit{mónos} (alone, only, single) and \textit{drómos} (running).
+\end{frame}
+
+\begin{frame}
+    \frametitle{Polydromy, a.k.a.~lack of monodromy}
+    Let's go back to our example $z\mapsto \sqrt{z}$ on $\C^{\times}$.
+    \pause
+
+    Pick a value of $\sqrt{z}$ at $z_{0}$ as before and let $\gamma\colon [0,1]\to \C^{\times}$ be a loop at $z_{0}$, with $\gamma(0)=\gamma(1)=z_{0}$.
+    Extend $\sqrt{z}$ along $\gamma$ as before.
+    \vspace{10em}
+    \pause
+
+    Do we always arrive at the same value of $\sqrt{z_{0}}$ at the end of the loop?
+\end{frame}
+
+\begin{frame}
+    \frametitle{Why are we then talking about monodromy?}
+    The Monodromy Theorem became so famous that people kept using the word ``monodromy'' to talk about polydromy\footnote{Fras Oort gave this explanation to Fabrizio Catanese.}.
+    \pause
+    \begin{figure}[htp]
+    
+	\centering
+	\includegraphics[scale=.3]{pictures/RedHerring.png}
+	\caption{This is an example of \href{https://ncatlab.org/nlab/show/red+herring+principle}{mathematical red herring principle}.}
+    \end{figure}
+    \pause
+    \setcounter{exe}{-1}
+    \begin{exe}
+	This is the second red herring that appeared in this talk so far.
+
+	Can you spot the first one?
+    \end{exe}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Goal: understand polydromy}
+    The Monodromy Theorem implies that $\pi_{1}(\C^{\times},z_{0})$ acts on the different possible values of $\sqrt{z_{0}}$.
+    \pause
+
+    The goal of this talk is to generalize this situation as follows:
+    \pause
+    \begin{enumerate}[label=\textbullet]
+	\setlength\itemsep{1em}
+	\item As we move $z$ in $\C^{\times}$, the possible values of $\sqrt{z}$ form a nice \textbf{covering space} of $\C^{\times}$.
+	\pause
+	\item If $p\colon Y\to X$ is a nice covering space, then $\pi_{1}(X,x)$ acts naturally on $p^{-1}(x)$.
+	    This is the \textbf{monodromy action}.
+	\pause
+    \item If the fibres of $p$ carry a natural vector space structure, we will be able to use the tools of \textbf{representation theory} to study polydromy.
+    \end{enumerate}
+\end{frame}
+
+\section{Galois coverings}
+\begin{frame}
+    \frametitle{Covering spaces}
+    Let $X$ be a topological space.
+    \pause
+    \begin{enumerate}[label=\textbullet]
+	\setlength\itemsep{1em}
+	\item The category of \textit{spaces over $X$} has for objects (continuous) maps $p\colon Y\to X$ and for morphisms commutative triangles
+	    \begin{center}
+		\begin{tikzcd}[ampersand replacement=\&]
+		    Y_{1}\arrow[swap]{dr}{p_{1}}\arrow{rr}{f} \& \& Y_{2}\arrow{dl}{p_{2}} \\
+		    \& X \& 
+		\end{tikzcd}
+	    \end{center}
+	    \pause
+	\item A map $p\colon Y\to X$ has property $\mathbf{P}$ \textit{locally on $X$} if every point $x\in X$ has an open neighbourhood $x\in U\subseteq X$ such that $\mathbf{P}$ is true for $p|_{p^{-1}(U)}\colon p^{-1}(U)\to U$.
+	    \pause
+	\item $p\colon Y\to X$ is a \textit{covering space} if locally on $X$ it is isomorphic to a projection $X\times F\to X$ for some discrete space $F$.
+    \end{enumerate}
+\end{frame}
+
+%\begin{frame}
+%    \frametitle{Examples}
+%    \begin{enumerate}[label=\textbullet]
+%	\setlength\itemsep{1em}
+%	\item Let $F$ be a discrete space.
+%	    Then the projection $X\times F\to X$ is a cover, called a \textit{trivial cover} of $X$.
+%	    \pause
+%	\item Let $\Z$ act on $\R$ by translation $n\cdot x:=x+n$.
+%	    Then the quotient map $\R\to \R/\Z=S^{1}$ is a cover.
+%	    Could it be a trivial cover?
+%	\item Consider again the map $z\mapsto z^{2}$.
+%	    This does not define a cover over $\C$, because $0$ is a \textit{branching point}.
+%	    But it does define a cover over $\C^{\times}$.
+%    \end{enumerate}
+%    \pause
+%    \begin{exe}
+%	A (continuous) group action $G\act Y$ is called \textit{even} if each $y\in Y$ has an open neighbourhood $y\in V\subseteq Y$ such that the sets $gV$ are pairwise disjoint for all $g\in G$.
+%
+%	If $G\act Y$ is even, then $p_{G}\colon Y\to G\backslash Y$ is a covering.
+%    \end{exe}
+%\end{frame}
+
+\begin{frame}
+    \frametitle{Maps into covering spaces} 
+    \begin{figure}[htp] 
+	\centering
+	\includegraphics[scale=.25]{pictures/lemma.jpg}
+	\caption{The set $\{z\in Z\mid f(z)=g(z)\}$ is open and closed, so if $Z$ is connected and $f$ and $g$ agree on a single point, then they agree in all of $Z$.}
+    \end{figure}
+    \pause
+    In particular, if $p\colon Y\to X$ is a connected cover and $\phi\in \Aut(Y\mid X)$ fixes a point, then $\phi=\id_{Y}$.
+\end{frame}
+
+%\begin{frame}
+%    \frametitle{Some more consequences}
+%    \begin{enumerate}[label=\textbullet]
+%	\setlength\itemsep{1em}
+%	\item If $p\colon Y\to X$ is a connected cover, then $\Aut(Y\mid X)\act Y$ is even.
+%	    \pause
+%	\item We saw earlier that if $G\act Y$ is even, then $Y\to G\backslash Y$ is a cover.
+%	    Suppose $Y$ is connected.
+%	    \pause
+%	    Define a group homomorphism:
+%	    \begin{align*}
+%		G & \longrightarrow \Aut(Y\mid G\backslash Y) \\
+%		g & \longmapsto (y\mapsto g\cdot y)
+%	    \end{align*}
+%	    \pause
+%	    \begin{enumerate}[label=$\circ$]
+%		\item Since $G\act Y$ is even, $G\to \Aut(Y\mid G\backslash Y)$ is injective.
+%		\pause
+%
+%		\item For $\phi\in \Aut(Y\mid G\backslash Y)$ and $y_{0}\in Y$, there is $g\in G$ with $\phi(y_{0})=g\cdot y_{0}$, because the fires are orbits and $\phi$ preservves fibres.
+%		\pause
+%		Since $Y$ is connected, $\phi(y)=g\cdot y$ for all $y\in Y$.
+%	    \end{enumerate}
+%    \end{enumerate}
+%\end{frame}
+
+\begin{frame}
+    \frametitle{Galois coverings}
+    A connected cover $p\colon Y\to X$ is called \textit{Galois} if $X=\Aut(Y\mid X)\backslash Y$;
+    \pause
+
+    equivalently, if $\Aut(Y\mid X)$ acts transitively on each fibre.
+    \pause
+
+    \begin{thm}
+	Let $p\colon Y\to X$ be a Galois cover.
+	Then there is a bijection
+	\begin{align*}
+	    \left\{ \mbox{ }\mathrm{Subgroups}\mbox{ }H\subseteq \Aut(Y\mid X) \mbox{ } \right\} & \leftrightarrow \left\{ \mbox{ }\mathrm{Intermediate} \mbox{ }\mathrm{covers} \mbox{ }q\colon Z\to X \mbox{ }\right\} \\
+	    H \quad  & \mapsto	\quad \left( H\backslash Y\to X\right) \\
+	    \Aut(Y\mid Z) \quad & \mapsfrom \quad \left( Z\to X\right)
+	\end{align*}
+	Moreover, $q\colon Z\to X$ is Galois if and only if $H\subseteq \Aut(Y\mid X)$ is a normal subgroup, in which case we have
+	\[ \Aut(Z\mid X)=G/H . \]
+    \end{thm}
+\end{frame}
+
+\section{Monodromy action}
+\begin{frame}
+    \frametitle{Monodromy action}
+\end{frame}
+
+\section{Local systems}
+\begin{frame}
+    \frametitle{Local systems}
+\end{frame}
+
 \end{document}
-
-
