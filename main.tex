@@ -245,7 +245,11 @@
 	\item If $p\colon Y\to X$ is a nice covering space, then $\pi_{1}(X,x)$ acts naturally on $p^{-1}(x)$.
 	    This is the \textbf{monodromy action}.
 	\pause
-    \item If the fibres of $p$ carry a natural vector space structure, we will be able to use the tools of \textbf{representation theory} to study polydromy.
+    \item We can recover the covering space from the monodromy action!
+	\pause
+    \item If the fibres of $p$ carry a natural vector space structure, then one can use the tools of \textbf{representation theory} to study polydromy.
+	\pause
+	This happens both naturally (e.g.~when solving differential equations on a complex domain) and artificially (e.g.~replacing the fibres by their cohomology groups).
     \end{enumerate}
 \end{frame}
 
@@ -475,12 +479,53 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Sketch of proof --- Part 2: applying Galois correspondence}
+    \frametitle{Sketch of proof --- Part 2: fully faithfulness}
+    \begin{enumerate}[label=\arabic*)]
+	\item Let $\psi\colon \Fib_{x}(Y)\to \Fib_{x}(Z)$ be $G:=\pi_{1}(X,x)$-equivariant.
+	    Want some $f\colon Y\to Z$ over $X$ such that $\psi(y)=f(y)$ for all $y\in p^{-1}(x)$.
+	    \pause
+	\item We may assume $Y$ and $Z$ connected ($G$-orbits are connected).
+	    \pause
+	\item Hence faithfulness follows from ``Maps into covering spaces''..
+	    \pause
+	\item Let $\pi_{y}\colon \tilde{X}_{x}\to Y$ corresponding to $y\in p^{-1}(x)$, so that \framebox{$Y=\Aut(\tilde{X}_{x}\mid Y)\backslash \tilde{X}_{x}$} by Galois correspondence.
+	    \pause
+	\item Via $G\cong \Aut(\tilde{X}_{x}\mid X)$ we can identify $G_{y}:=\{ g\in G\mid g\cdot y=y\}$ and $\{ \phi\in \Aut(\tilde{X}_{x}\mid X)\mid \pi_{y}\circ \phi =\pi_{y}\}$.
+	    Hence \framebox{$\Aut(\tilde{X}_{x}\mid Y)=G_{y}$}.
+	    \pause
+	\item $G_{y}\subseteq G_{\psi(y)}$ by $G$-equivar.~$\rightsquigarrow f\colon Y=G_{y}\backslash \tilde{X}_{x}\to G_{\psi(y)}\backslash \tilde{X}_{x}=Z$.
+	\item $f(y)=f(\pi_{y}([x]))=\pi_{\psi(y)}([x])=\psi(y)$.
+	    For $y'\in p^{-1}(y)$, let $\gamma$ s.t.~$[\gamma]\cdot y=y'$, so that $\psi(y')=[\gamma]\cdot \psi(y)$.
+	    Then we have
+	    \[ f(y')=f\circ\tilde{\gamma}^{Y}(1)=\tilde{\gamma}^{Z}(1)=[\gamma]\cdot \psi(y)=\psi(y'). \]
+    \end{enumerate}
 \end{frame}
 
-\section{Local systems}
 \begin{frame}
-    \frametitle{Local systems}
+    \frametitle{Sketch of proof --- Part 3: essential surjectivity}
+    \begin{enumerate}[label=\arabic*)]
+	\item Let $S$ be a set with a $G:=\pi_{1}(X,x)$ action.
+	    \pause
+	\item We may assume $G\act S$ transitive (otherwise split into orbits).
+	    \pause
+	\item Let $s\in S$ any and let $G_{s}$ be its stabiliser.
+	    By Galois correspondence we can find
+	    \begin{center}
+		\begin{tikzcd}[ampersand replacement=\&]
+		    \tilde{X}_{x}\arrow[swap]{dr}{\pi}\arrow{r}{q} \& Y:=G_{s}\backslash \tilde{X}_{x}\arrow{d}{p} \\
+		    \& X
+		\end{tikzcd}
+	    \end{center}
+	    \pause
+	\item Since $p\colon Y\to X$ is connected, $G\act p^{-1}(x)$ is transitive.
+	\item Define $\varphi(q([x])):=s$.
+	    We will try to extend by $G$-equivariance.
+	    \pause
+	\item If $g'\cdot q([x])=g\cdot q([x])$, then $g'g^{-1}\in G_{q([x])}=\Aut(\tilde{X}_{x}\mid Y)$, which is $G_{s}$ by construction.
+	    Hence we can define a $G$-equivariant map $\varphi\colon p^{-1}(x) \to S$ by $y=g\cdot q([x]) \mapsto g\cdot s$.
+	    \pause
+	\item If $g\cdot s=g'\cdot s$, then again $g'g^{-1}\in G_{s}=G_{y}$, so $\varphi(y)=$
+    \end{enumerate}
 \end{frame}
 
 \end{document}
