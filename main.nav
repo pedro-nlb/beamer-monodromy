@@ -17,31 +17,41 @@
 \headcommand {\beamer@framepages {15}{19}}
 \headcommand {\beamer@sectionpages {2}{19}}
 \headcommand {\beamer@subsectionpages {2}{19}}
-\headcommand {\sectionentry {2}{Galois coverings}{20}{Galois coverings}{0}}
+\headcommand {\sectionentry {2}{Galois correspondence}{20}{Galois correspondence}{0}}
 \headcommand {\slideentry {2}{0}{1}{20/20}{}{0}}
 \headcommand {\beamer@framepages {20}{20}}
 \headcommand {\slideentry {2}{0}{2}{21/24}{}{0}}
 \headcommand {\beamer@framepages {21}{24}}
 \headcommand {\slideentry {2}{0}{3}{25/26}{}{0}}
 \headcommand {\beamer@framepages {25}{26}}
-\headcommand {\slideentry {2}{0}{4}{27/29}{}{0}}
-\headcommand {\beamer@framepages {27}{29}}
-\headcommand {\beamer@sectionpages {20}{29}}
-\headcommand {\beamer@subsectionpages {20}{29}}
-\headcommand {\sectionentry {3}{Monodromy action}{30}{Monodromy action}{0}}
-\headcommand {\slideentry {3}{0}{1}{30/30}{}{0}}
-\headcommand {\beamer@framepages {30}{30}}
-\headcommand {\slideentry {3}{0}{2}{31/31}{}{0}}
-\headcommand {\beamer@framepages {31}{31}}
-\headcommand {\beamer@sectionpages {30}{31}}
-\headcommand {\beamer@subsectionpages {30}{31}}
-\headcommand {\sectionentry {4}{Local systems}{32}{Local systems}{0}}
-\headcommand {\slideentry {4}{0}{1}{32/32}{}{0}}
-\headcommand {\beamer@framepages {32}{32}}
-\headcommand {\slideentry {4}{0}{2}{33/33}{}{0}}
-\headcommand {\beamer@framepages {33}{33}}
-\headcommand {\beamer@partpages {1}{33}}
-\headcommand {\beamer@subsectionpages {32}{33}}
-\headcommand {\beamer@sectionpages {32}{33}}
-\headcommand {\beamer@documentpages {33}}
-\headcommand {\gdef \inserttotalframenumber {15}}
+\headcommand {\slideentry {2}{0}{4}{27/30}{}{0}}
+\headcommand {\beamer@framepages {27}{30}}
+\headcommand {\slideentry {2}{0}{5}{31/35}{}{0}}
+\headcommand {\beamer@framepages {31}{35}}
+\headcommand {\beamer@sectionpages {20}{35}}
+\headcommand {\beamer@subsectionpages {20}{35}}
+\headcommand {\sectionentry {3}{Monodromy action}{36}{Monodromy action}{0}}
+\headcommand {\slideentry {3}{0}{1}{36/36}{}{0}}
+\headcommand {\beamer@framepages {36}{36}}
+\headcommand {\slideentry {3}{0}{2}{37/43}{}{0}}
+\headcommand {\beamer@framepages {37}{43}}
+\headcommand {\slideentry {3}{0}{3}{44/44}{}{0}}
+\headcommand {\beamer@framepages {44}{44}}
+\headcommand {\slideentry {3}{0}{4}{45/46}{}{0}}
+\headcommand {\beamer@framepages {45}{46}}
+\headcommand {\slideentry {3}{0}{5}{47/53}{}{0}}
+\headcommand {\beamer@framepages {47}{53}}
+\headcommand {\slideentry {3}{0}{6}{54/54}{}{0}}
+\headcommand {\beamer@framepages {54}{54}}
+\headcommand {\beamer@sectionpages {36}{54}}
+\headcommand {\beamer@subsectionpages {36}{54}}
+\headcommand {\sectionentry {4}{Local systems}{55}{Local systems}{0}}
+\headcommand {\slideentry {4}{0}{1}{55/55}{}{0}}
+\headcommand {\beamer@framepages {55}{55}}
+\headcommand {\slideentry {4}{0}{2}{56/56}{}{0}}
+\headcommand {\beamer@framepages {56}{56}}
+\headcommand {\beamer@partpages {1}{56}}
+\headcommand {\beamer@subsectionpages {55}{56}}
+\headcommand {\beamer@sectionpages {55}{56}}
+\headcommand {\beamer@documentpages {56}}
+\headcommand {\gdef \inserttotalframenumber {20}}

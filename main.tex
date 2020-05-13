@@ -75,7 +75,7 @@
 % THEOREM ENVIRONMENTS
 %
 \setbeamertemplate{theorems}[numbered]
-\newtheorem{thm}{Theorem}
+\newtheorem*{thm}{Theorem}
 \newtheorem{exe}{Exercise}
 
 %
@@ -110,6 +110,7 @@
 % MATH OPERATORS
 %
 \DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Fib}{Fib}
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\Aut}{Aut}
 
@@ -118,6 +119,7 @@
 %
 \newcommand{\ot}{\otimes}
 \newcommand{\op}{\oplus}
+\newcommand{\Cov}{\mathbf{Cov}}
 \newcommand{\act}{\mbox{ }\rotatebox[origin=c]{-120}{$\circlearrowright$}}
 
 %
@@ -158,6 +160,7 @@
 	\tableofcontents[currentsection]
     \end{frame}
 }
+\usecolortheme{orchid}
  
 \begin{document}
  
@@ -200,20 +203,21 @@
     Let's go back to our example $z\mapsto \sqrt{z}$ on $\C^{\times}$.
     \pause
 
-    Pick a value of $\sqrt{z}$ at $z_{0}$ as before and let $\gamma\colon [0,1]\to \C^{\times}$ be a loop at $z_{0}$, with $\gamma(0)=\gamma(1)=z_{0}$.
+    Pick a value of $\sqrt{1}$, say $1$ itself, and let $\gamma\colon [0,1]\to \C^{\times}$ be a loop at $1$ around $0$.
     Extend $\sqrt{z}$ along $\gamma$ as before.
-    \vspace{10em}
     \pause
-
-    Do we always arrive at the same value of $\sqrt{z_{0}}$ at the end of the loop?
+    \begin{figure}[htp]
+	\centering
+	\includegraphics[scale=.3]{pictures/root.jpg}
+	\caption{After the loop we arrive at $-1$, the other possible value of $\sqrt{1}$.}
+    \end{figure}
 \end{frame}
 
 \begin{frame}
     \frametitle{Why are we then talking about monodromy?}
-    The Monodromy Theorem became so famous that people kept using the word ``monodromy'' to talk about polydromy\footnote{Fras Oort gave this explanation to Fabrizio Catanese.}.
+    The Monodromy Theorem became so famous that people kept using the word ``monodromy'' to talk about polydromy\footnote{Frans Oort gave this explanation to Fabrizio Catanese.}.
     \pause
     \begin{figure}[htp]
-    
 	\centering
 	\includegraphics[scale=.3]{pictures/RedHerring.png}
 	\caption{This is an example of \href{https://ncatlab.org/nlab/show/red+herring+principle}{mathematical red herring principle}.}
@@ -245,7 +249,7 @@
     \end{enumerate}
 \end{frame}
 
-\section{Galois coverings}
+\section{Galois correspondence}
 \begin{frame}
     \frametitle{Covering spaces}
     Let $X$ be a topological space.
@@ -326,29 +330,152 @@
 %\end{frame}
 
 \begin{frame}
-    \frametitle{Galois coverings}
+    \frametitle{Galois correspondence [$X$ locally connected]}
     A connected cover $p\colon Y\to X$ is called \textit{Galois} if $X=\Aut(Y\mid X)\backslash Y$;
     \pause
 
     equivalently, if $\Aut(Y\mid X)$ acts transitively on each fibre.
     \pause
 
-    \begin{thm}
+    \begin{thm}[{\cite[Theorem 2.2.10]{sza08}}]
 	Let $p\colon Y\to X$ be a Galois cover.
 	Then there is a bijection
 	\begin{align*}
-	    \left\{ \mbox{ }\mathrm{Subgroups}\mbox{ }H\subseteq \Aut(Y\mid X) \mbox{ } \right\} & \leftrightarrow \left\{ \mbox{ }\mathrm{Intermediate} \mbox{ }\mathrm{covers} \mbox{ }q\colon Z\to X \mbox{ }\right\} \\
+	    \left\{ \begin{matrix*}
+		\mathrm{ Subgroups } \\
+	    0\subseteq H\subseteq \Aut(Y\mid X)
+	    \end{matrix*} \right\} & \leftrightarrow \left\{ \begin{matrix*}
+		\mathrm{Connected} \\
+		\mathrm{intermediate} \\
+		\mathrm{covers}
+	    \end{matrix*} 
+	    \quad
+	    \begin{tikzcd}[ampersand replacement=\&]
+		Z\arrow[swap]{d}{q} \& Y\arrow{dl}{p}\arrow[dashed, swap]{l}{\exists} \\
+		X \&
+	    \end{tikzcd}
+	    \right\} \\
 	    H \quad  & \mapsto	\quad \left( H\backslash Y\to X\right) \\
 	    \Aut(Y\mid Z) \quad & \mapsfrom \quad \left( Z\to X\right)
 	\end{align*}
+	\pause
 	Moreover, $q\colon Z\to X$ is Galois if and only if $H\subseteq \Aut(Y\mid X)$ is a normal subgroup, in which case we have
-	\[ \Aut(Z\mid X)=G/H . \]
+	\[ \Aut(Z\mid X)\cong G/H . \]
     \end{thm}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Proof of the bijection in the previous theorem}
+    \begin{enumerate}[label=\arabic*)]
+	\item $H\backslash Y\to X$ is a cover (local on $X$, hence may assume $Y=X\times F$).
+	    \pause
+	\begin{exe}
+	    A continuous action $G\act Y$ is called \normalfont{even} if each $y\in Y$ has an open nhood $y\in V\subseteq Y$ such that $\{gV\}_{g\in G}$ are pairwise disjoint.
+	    Show that $Y\to G\backslash Y$ is then a cover and deduce that $Y\to H\backslash Y$ is a cover.
+	\end{exe}
+	    \pause
+    \item Define $\varphi\colon H\to \Aut(Y\mid H\backslash Y)$ by $\varphi(h)(y):=h\cdot y$.
+	Since $H\act Y$ is even, $\varphi$ is injective.
+	By ``Maps into covering spaces'' it is also surjective.
+	    Hence
+	    \framebox{$H\mapsto (H\backslash Y\to X)\mapsto \Aut(Y\mid H\backslash Y)\cong H$}.
+	    \pause
+	\item If $q\colon Z\to X$ is an intermediate connected cover, then the map $Y\to Z$ is a cover as well (local on $Z$, hence on $X$, hence we may assume that this map has the form $X\times F_{Y}\to X\times F_{Z}$).
+	    \pause
+	\item Since $\Aut(Y\mid X)\act p^{-1}(q(z))$ is transitive, $\Aut(Y\mid Z)\act f^{-1}(z)$ is transitive as well by ``Maps into covering spaces''.
+	    Hence $Y\to Z$ is Galois and \framebox{$Z\mapsto \Aut(Y\mid Z)\mapsto \Aut(Y\mid Z)\backslash Y=Z$}.
+    \end{enumerate}
 \end{frame}
 
 \section{Monodromy action}
 \begin{frame}
-    \frametitle{Monodromy action}
+    \frametitle{Homotopy Lifting}
+    Let $p\colon Y\to X$ be a cover and $f_{t}\colon Z\to X$ a
+    
+    homotopy, i.e.~a map $F\colon Z\times [0,1]\to X$.
+    \pause
+
+    If $\tilde{f}_{0}\colon Z\to Y$ is a lift of $f_{0}\colon Z\to X$, then 
+    
+    we can extend it to a lift $\tilde{F}\colon Z\times [0,1]\to Y$ of the whole homotopy.
+    \pause
+    \begin{tikzpicture}[remember picture,overlay]
+    \node[xshift=-25mm,yshift=-16mm] at (current page.north east)
+    {\includegraphics[scale=.22]{pictures/HippityHoppity.png}};
+    \end{tikzpicture}
+    \pause
+
+    \begin{enumerate}[label=\arabic*)]
+	\item Let $z_{0}\in W\subseteq Z$ be an open neighbourhood of a point in $Z$
+
+	    for which there exists a subdivision $0=t_{0}<t_{1}<\cdots <t_{m}=1$
+
+	    such that $p\colon Y\to X$ is trivial over $F(W\times [t_{i},t_{i+1}])$ for all $i$.
+	    \pause
+	\item Since $p$ is trivial over $F(W\times [0,t_{1}])$, there is a unique way to extend the lifting $\tilde{f}_{0}$ to liftings $\tilde{f}_{t}$ for $t\in [0,t_{1}]$.
+	    \pause
+	\item Iterate this process to obtain a local lifting $\tilde{F}\colon W\times [0,1]\to Y$.
+	    \pause
+	\item Do the same for each point $z\in Z$.
+	    On the overlaps the extensions agree by ``Maps into covering spaces'' applied to each $\{z\}\times [0,1]$, because $\tilde{F}(z,0)$ has to be $\tilde{f}_{0}(z)$.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{The monodromy action}
+    \begin{figure}[htp]
+	\centering
+	\includegraphics[scale=.25]{pictures/monodromy.jpg}
+	\caption{Given the class of a path $[\gamma]\in \pi_{1}(X,x)$ and a point $y\in p^{-1}(x)$, set $[\gamma]\cdot y:=\tilde{\gamma}(1)$, where $\tilde{\gamma}$ is the unique lift of $\gamma$ to the cover.
+	Only defining concatenation the unconventional way we obtain a \textit{left} action!}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Cover$\leftrightarrow $Monodromy [$X$ connected+locally $1$-connected]}
+    \begin{thm}[{\cite[Theorem 2.3.4]{sza08}}]
+	The functor
+	\begin{align*}
+	    \Fib_{x}\colon \Cov(X) & \longrightarrow \pi_{1}(X,x)-\Set \\
+	    (p\colon Y\to X) & \longmapsto \pi_{1}(X,x)\act p^{-1}(x)
+	\end{align*}
+	is an equivalence of categories from the category of covers of $X$ to the category of sets endowed with a $\pi_{1}(X,x)$-action.
+    \end{thm}
+    \pause
+
+    \setcounter{exe}{1}
+    \begin{exe}
+	Check that $\Fib_{x}$ is a functor.
+	[Hint: ``Maps into covering spaces''.]
+    \end{exe}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Sketch of proof --- Part 1: the universal cover}
+    \begin{enumerate}[label=\arabic*)]
+	\item The \textit{universal cover} $\tilde{X}_{x}$ consists of homotopy classes of paths in $X$ starting at $X$, and the projection $\pi\colon \tilde{X}_{x}\to X$ is $\pi([\alpha]):=\alpha(1)$.
+	    \pause
+	\item Let $y\in p^{-1}(x)$.
+	    Define $\pi_{y}\in \Hom_{X}(\tilde{X}_{x},Y)$ by $\pi_{y}([\alpha]):=\tilde{\alpha}(1)$.
+	    \pause
+	\item Let $\phi\in \Hom_{X}(\tilde{X}_{x},Y)$.
+	    Define $y\in p^{-1}(x)$ as $y:=\phi([x])$.
+	    \pause
+	\item These two maps are mutually inverse, so \framebox{$\Fib_{x}\cong \Hom_{X}(\tilde{X}_{x},-)$}.
+	    \pause
+	\item $\pi\colon \tilde{X}_{x}\to X$ is Galois, because $\pi_{[\gamma]}$ is an automorphism and $\pi_{[\gamma]}([x])=[\gamma]$ (suffices to check transitivity on a single fibre).
+	    \pause
+	\item \framebox{$\pi_{1}(X,x)\cong \Aut(\tilde{X}_{x}\mid X)^{\mathrm{op}}$} via $[\gamma]\longmapsto ([\alpha]\mapsto [\alpha\cdot \gamma])$.
+	    \pause
+	\item Let $\phi\in \Aut(\tilde{X}_{x}\mid X)$ and $y\in p^{-1}(x)$.
+	    Define $\phi\cdot y:=\pi_{y}\circ \phi([x])$, i.e.~the point in $\Fib_{x}(Y)$ corresponding to $\pi_{y}\circ \phi\in \Hom_{X}(\tilde{X}_{x},Y)$.
+	    Then $\psi\cdot(\phi\cdot y)$ corresponds to $\pi_{y}\circ \phi\circ \psi=\pi_{y}\circ (\psi\circ^{\mathrm{op}}\phi)$.
+	    We get $\Aut(\tilde{X}_{x}\mid X)^{\mathrm{op}}\act p^{-1}(x)$, which agrees with $\pi_{1}(X,x)\act p^{-1}(x)$.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Sketch of proof --- Part 2: applying Galois correspondence}
 \end{frame}
 
 \section{Local systems}
