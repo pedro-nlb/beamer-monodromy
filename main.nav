@@ -47,17 +47,15 @@
 \headcommand {\beamer@framepages {62}{67}}
 \headcommand {\beamer@sectionpages {38}{67}}
 \headcommand {\beamer@subsectionpages {38}{67}}
-\headcommand {\sectionentry {4}{Examples}{68}{Examples}{0}}
+\headcommand {\sectionentry {4}{Example}{68}{Example}{0}}
 \headcommand {\slideentry {4}{0}{1}{68/68}{}{0}}
 \headcommand {\beamer@framepages {68}{68}}
-\headcommand {\slideentry {4}{0}{2}{69/69}{}{0}}
-\headcommand {\beamer@framepages {69}{69}}
-\headcommand {\slideentry {4}{0}{3}{70/70}{}{0}}
-\headcommand {\beamer@framepages {70}{70}}
-\headcommand {\slideentry {4}{0}{4}{71/71}{}{0}}
-\headcommand {\beamer@framepages {71}{71}}
-\headcommand {\beamer@partpages {1}{71}}
-\headcommand {\beamer@subsectionpages {68}{71}}
-\headcommand {\beamer@sectionpages {68}{71}}
-\headcommand {\beamer@documentpages {71}}
-\headcommand {\gdef \inserttotalframenumber {23}}
+\headcommand {\slideentry {4}{0}{2}{69/72}{}{0}}
+\headcommand {\beamer@framepages {69}{72}}
+\headcommand {\slideentry {4}{0}{3}{73/73}{}{0}}
+\headcommand {\beamer@framepages {73}{73}}
+\headcommand {\beamer@partpages {1}{73}}
+\headcommand {\beamer@subsectionpages {68}{73}}
+\headcommand {\beamer@sectionpages {68}{73}}
+\headcommand {\beamer@documentpages {73}}
+\headcommand {\gdef \inserttotalframenumber {22}}

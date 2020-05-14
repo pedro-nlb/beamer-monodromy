@@ -245,7 +245,7 @@
 	\item If $p\colon Y\to X$ is a nice covering space, then $\pi_{1}(X,x)$ acts naturally on $p^{-1}(x)$.
 	    This is the \textbf{monodromy action}.
 	\pause
-    \item We can recover the covering space from the monodromy action!
+    \item We can recover the covering space from the monodromy action.
 	\pause
     \item If the fibres of $p$ carry a natural vector space structure, then one can use the tools of \textbf{representation theory} to study polydromy.
 	\pause
@@ -529,17 +529,35 @@
     \end{enumerate}
 \end{frame}
 
-\section{Examples}
+\section{Example}
 \begin{frame}
-    \frametitle{Back to our motivating example}
+    \frametitle{Back to our initial example}
+    Let $\pi\colon \C^{\times}\to \C^{\times}$ be our map $z\mapsto z^{2}$, whose fibre over $z_{0}$ consists of the points $\pm\sqrt{z_{0}}$, and let $p\colon Y\to \C^{\times}$ be the cover in which the fibre over $z_{0}\in \C^{\times}$ is the $\Q$-vector space spanned by $\{ \sqrt{z_{0}},-\sqrt{z_{0}}\}$ with the discrete topology\footnote{We can define $p$ formally as the étalé space of the locally constant sheaf $\pi_{*}\Q$.}.
+    \pause
+    Let $[\gamma]\in \pi_{1}(\C^{\times},1)$ be a generator, say $\gamma(t):=e^{2t\pi i}$.
+    We saw at the beginning of the talk that $[\gamma]\cdot \sqrt{1}=-\sqrt{1}$.
+    \pause
+
+    Hence the monodromy representation is given by the matrix
+    \[ A:=\begin{pmatrix}
+	0 & 1 \\
+	1 & 0
+    \end{pmatrix},
+    \]
+    meaning that $\pi_{1}(\C^{\times},1)\to \operatorname{GL_{2}(\Q)}$ maps $[\gamma]$ to $A$.
+    \pause
+    \begin{exe}
+	A \normalfont{subrepresentation} of $\rho\colon G\to \operatorname{GL}(V)$ consists of a $G$-invariant subspace $W\subseteq V$ together with the induced $G\to \operatorname{GL}(W)$.
+	Find all subrepresentations of this monodromy action.
+	What are the fibres at a point $z_{0}\in \C^{\times}$ of the corresponding covering spaces?
+    \end{exe}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Cover of Riemann surface}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Some complex analysis}
+    \frametitle{Thanks for your attention!}
+    Main reference:
+    \bibliographystyle{alpha}
+    \bibliography{main.bib}
 \end{frame}
 
 \end{document}
