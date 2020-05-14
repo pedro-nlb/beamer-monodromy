@@ -384,7 +384,7 @@
 	    Hence
 	    \framebox{$H\mapsto (H\backslash Y\to X)\mapsto \Aut(Y\mid H\backslash Y)\cong H$}.
 	    \pause
-	\item If $q\colon Z\to X$ is an intermediate connected cover, then the map $Y\to Z$ is a cover as well (local on $Z$, hence on $X$, hence we may assume that this map has the form $X\times F_{Y}\to X\times F_{Z}$).
+	\item If $q\colon Z\to X$ is an intermediate connected cover, then the map $f\colon Y\to Z$ is a cover as well (local on $Z$, hence on $X$, hence we may assume that this map has the form $X\times F_{Y}\to X\times F_{Z}$).
 	    \pause
 	\item Since $\Aut(Y\mid X)\act p^{-1}(q(z))$ is transitive, $\Aut(Y\mid Z)\act f^{-1}(z)$ is transitive as well by ``Maps into covering spaces''.
 	    Hence $Y\to Z$ is Galois and \framebox{$Z\mapsto \Aut(Y\mid Z)\mapsto \Aut(Y\mid Z)\backslash Y=Z$}.
@@ -521,11 +521,25 @@
 	\item Define $\varphi(q([x])):=s$.
 	    We will try to extend by $G$-equivariance.
 	    \pause
-	\item If $g'\cdot q([x])=g\cdot q([x])$, then $g'g^{-1}\in G_{q([x])}=\Aut(\tilde{X}_{x}\mid Y)$, which is $G_{s}$ by construction.
-	    Hence we can define a $G$-equivariant map $\varphi\colon p^{-1}(x) \to S$ by $y=g\cdot q([x]) \mapsto g\cdot s$.
+	\item If $g'\cdot q([x])=g\cdot q([x])$, then $g'g^{-1}\in \Aut(\tilde{X}_{x}\mid Y)=G_{s}$.
+	    Hence $\varphi\colon p^{-1}(x) \to S$ defined as $y=g\cdot q([x]) \mapsto g\cdot s$ is $G$-equivar.
 	    \pause
-	\item If $g\cdot s=g'\cdot s$, then again $g'g^{-1}\in G_{s}=G_{y}$, so $\varphi(y)=$
+	\item If $g\cdot s=g'\cdot s$, then again $g'g^{-1}\in G_{s}=G_{q([x])}$, so $g\cdot q([x])=g'\cdot q([x])$.
+	    And transitivity implies surjectivity.
     \end{enumerate}
+\end{frame}
+
+\section{Examples}
+\begin{frame}
+    \frametitle{Back to our motivating example}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Cover of Riemann surface}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Some complex analysis}
 \end{frame}
 
 \end{document}
